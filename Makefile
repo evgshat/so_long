@@ -1,4 +1,10 @@
-SRCS = game.c
+SRCS = game.c \
+		init_struct.c \
+		create_game.c \
+		check_map_v2.c \
+		draw.c \
+		debug.c \
+		init_img.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -30,3 +36,5 @@ fclean:	clean
 re:	fclean all
 
 .PHONY: all clean fclean re
+
+# FRAMEWORK	=	-Lmlx -lm -lmlx -framework OpenGL -framework AppKit

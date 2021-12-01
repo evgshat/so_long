@@ -21,15 +21,14 @@
 #include "so_long.h"
 #include "get_next_line.h"
 
-static int	check_map(char *map);
-static int	check_wrong_ch(char *map);
-static int	check_first_line(char *map);
-static int	check_last_line(char *map);
-static int	check_first_and_last_ch(char *map);
+static int	check_map(t_game *game);
+static int	check_wrong_ch(t_game *game);
+static int	check_first_line(t_game *game);
+static int	check_last_line(t_game *game);
+static int	check_first_and_last_ch(t_game *game);
 
-char	*create_map(int a)
+int	create_map(t_game *game)
 {
-	char	*map;
 	int		fd;
 	char	ch;
 	int		was_read;
@@ -37,111 +36,111 @@ char	*create_map(int a)
 
 	was_read = 0;
 	i = 0;
-	map = malloc(100000);
-	if (map == 0)
-		return (NULL);
+	game->map = malloc(100000);
+	if (game->map == 0)
+		return (-1);
 	fd = open("map.ber", O_RDONLY);
 	was_read = read(fd, &ch, 1);
 	if (was_read == 0)
-		return (NULL);
+		return (-1);
 	while (was_read != 0)
 	{
-		map[i] = ch;
+		game->map[i] = ch;
 		i++;
 		was_read = read(fd, &ch, 1);
 	}
-	if ((check_map(map)) < 0)
-		return (NULL);
+	if ((check_map(game)) < 0)
+		return (-1);
 	else
-		return (map);
+		return (0);
 }
 
-static int	check_map(char *map)
+static int	check_map(t_game *game)
 {
 	int	check;
 
 	check = 0;
-	check = check_wrong_ch(map);
+	check = check_wrong_ch(game);
 	if (check < 0)
 		return (-1);
-	check = check_first_line(map);
+	check = check_first_line(game);
 	if (check < 0)
 		return (-1);
-	check = check_last_line(map);
+	check = check_last_line(game);
 	if (check < 0)
 		return (-1);
-	check = check_first_and_last_ch(map);
+	check = check_first_and_last_ch(game);
 	if (check < 0)
 		return (-1);
 	return (0);
 }
 
-static int check_wrong_ch(char *map)
+static int check_wrong_ch(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while (map[i] != '\0')
+	while (game->map[i] != '\0')
 	{
-		if (map[i] != '0' && map[i] != '1' && map[i] != 'E' && map[i] != 'P' && map[i] != 'C' && map[i] != '\n')
+		if (game->map[i] != '0' && game->map[i] != '1' && game->map[i] != 'E' && game->map[i] != 'P' && game->map[i] != 'C' && game->map[i] != '\n')
 			return (-1);
 		i++;
 	}
 	return (0);
 }
 
-static int	check_first_line(char *map)
+static int	check_first_line(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while(map[i] != '\n')
+	while(game->map[i] != '\n')
 	{
-		if (map[i] != '1')
+		if (game->map[i] != '1')
 			return (-1);
 		i++;
 	}
 	return (0);
 }
 
-static int	check_last_line(char *map)
+static int	check_last_line(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while(map[i] != '\0')
+	while(game->map[i] != '\0')
 		i++;
 	i--;
-	while (map[i] != '\n')
+	while (game->map[i] != '\n')
 	{
-		if (map[i] != '1')
+		if (game->map[i] != '1')
 			return (-1);
 		i--;
 	}
 	return (0);
 }
 
-static int	check_first_and_last_ch(char *map)
+static int	check_first_and_last_ch(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while(map[i] != '\n')
+	while(game->map[i] != '\n')
 		i++;
 	i--;
-	if (map[i] != '1')
+	if (game->map[i] != '1')
 			return (-1);
 	i--;
 	while (i >= 0)
 	{
-		if (map[i - 1] == '\n')
+		if (game->map[i - 1] == '\n')
 		{
-			if (map[i] != '1')
+			if (game->map[i] != '1')
 				return (-1);
 		}
 		if (i == 0)
 		{
-			if (map[i] == 1)
+			if (game->map[i] == 1)
 				return (0);
 		}
 		i--;
@@ -149,11 +148,11 @@ static int	check_first_and_last_ch(char *map)
 	return (0);
 }
 
-int main()
-{
-	char	*map;
+// int main()
+// {
+// 	char	*map;
 
-	map = create_map(10);
-	printf("%s", map);
-	free(map);
-}
+// 	map = create_map(10);
+// 	printf("%s", map);
+// 	free(map);
+// }
