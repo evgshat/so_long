@@ -7,19 +7,26 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "get_next_line.h"
 
-# define TRUE			1
-# define FALSE			0
+# define TRUE	1
+# define FALSE	0
 
-// window
-# define WIDTH			1000
-# define HEIGHT			500
 //
 
 // debug
-# define DEBUG			1
+# define DEBUG	1
 //
 
+// button
+
+# define W		13
+# define S		1
+# define A		0
+# define D		2
+# define ESC	53
+# define PRESS	2
+# define EXIT	17
 
 typedef struct s_img
 {
@@ -37,22 +44,34 @@ typedef struct s_game
 	int		coord_x;
 	int		coord_y;
 	void	*img;
-	char	*map;
+	char	**map;
 	t_img	*player_temp;
 	void	*food;
 	void	*wall;
 	void	*exit;
 	void	*empty;
 	void	*player;
+	int		row;
+	int		column;
+	int		pl_i; //x
+	int		pl_j;
+	int		steps;
 
 } t_game;
 
 
 int		init_struct(t_game *game);
+char	*get_next_line(int fd);
+int		check_map(t_game *game);
 void	create_game(t_game *game);
-int		create_map(t_game *game);
 int		draw(t_game *game);
 void	debug(char *msg, int debug);
 void	init_img(t_game *game);
+void	count_row(t_game *game);
+void	position_player(t_game *game);
+int		move(int button, t_game *game);
+int		can_move(int button, t_game *game);
+int		close_game(t_game *game);
+
 
 #endif

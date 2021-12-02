@@ -6,6 +6,9 @@ int init_struct(t_game *game)
 {
 	game->map = NULL;
 	game->map = malloc(1000000);
+	game->row = 0;
+	game->column = 0;
+	game->steps = 0;
 	// game->coord_x = 0;
 	// game->coord_y = 0;
 	// game->mlx = mlx_init();

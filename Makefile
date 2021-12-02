@@ -1,10 +1,17 @@
 SRCS = game.c \
 		init_struct.c \
 		create_game.c \
-		check_map_v2.c \
+		check_map.c \
 		draw.c \
 		debug.c \
-		init_img.c
+		init_img.c \
+		get_next_line.c \
+		get_next_line_utils.c \
+		count_row.c \
+		position_player.c \
+		move.c \
+		can_move.c \
+		close_game.c
 
 OBJS = $(SRCS:.c=.o)
 
