@@ -45,12 +45,18 @@ typedef struct s_game
 	int		coord_y;
 	void	*img;
 	char	**map;
-	t_img	*player_temp;
 	void	*food;
 	void	*wall;
 	void	*exit;
 	void	*empty;
-	void	*player;
+	void	*player_front;
+	void	*player_back;
+	void	*player_right;
+	void	*player_left;
+	int		flag_front;
+	int		flag_back;
+	int		flag_right;
+	int		flag_left;
 	int		row;
 	int		column;
 	int		pl_i; //x
@@ -72,6 +78,7 @@ void	position_player(t_game *game);
 int		move(int button, t_game *game);
 int		can_move(int button, t_game *game);
 int		close_game(t_game *game);
+void	delete_flags_player(t_game *game);
 
 
 #endif

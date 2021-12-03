@@ -9,6 +9,7 @@ int init_struct(t_game *game)
 	game->row = 0;
 	game->column = 0;
 	game->steps = 0;
+	delete_flags_player(game);
 	// game->coord_x = 0;
 	// game->coord_y = 0;
 	// game->mlx = mlx_init();

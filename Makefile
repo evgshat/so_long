@@ -11,7 +11,8 @@ SRCS = game.c \
 		position_player.c \
 		move.c \
 		can_move.c \
-		close_game.c
+		close_game.c \
+		delete_flags_player.c
 
 OBJS = $(SRCS:.c=.o)
 

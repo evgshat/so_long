@@ -11,8 +11,10 @@ void	move_a(t_game *game);
 int	move(int button, t_game *game)
 {
 	int res;
+
 	res = can_move(button, game);
-	printf("%d\n", button);
+	if (button == 53)
+		close_game(game);
 	if (res == TRUE)
 	{
 		if (button == W)
@@ -31,6 +33,8 @@ void	move_w(t_game *game)
 {
 	game->map[game->pl_i][game->pl_j] = '0';
 	game->map[--game->pl_i][game->pl_j] = 'P';
+	delete_flags_player(game);
+	game->flag_back = 1;
 	game->steps++;
 }
 
@@ -38,22 +42,25 @@ void	move_s(t_game *game)
 {
 	game->map[game->pl_i][game->pl_j] = '0';
 	game->map[++game->pl_i][game->pl_j] = 'P';
+	delete_flags_player(game);
+	game->flag_front = 1;
 	game->steps++;
-	// draw(game);
 }
 
 void	move_d(t_game *game)
 {
 	game->map[game->pl_i][game->pl_j] = '0';
 	game->map[game->pl_i][++game->pl_j] = 'P';
+	delete_flags_player(game);
+	game->flag_right = 1;
 	game->steps++;
-	// draw(game);
 }
 
 void	move_a(t_game *game)
 {
 	game->map[game->pl_i][game->pl_j] = '0';
 	game->map[game->pl_i][--game->pl_j] = 'P';
+	delete_flags_player(game);
+	game->flag_left = 1;
 	game->steps++;
-	// draw(game);
 }
