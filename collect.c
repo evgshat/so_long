@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_game.c                                      :+:      :+:    :+:   */
+/*   collect.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 20:23:54 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/12/06 20:39:10 by lcharlet         ###   ########lyon.fr   */
+/*   Created: 2021/12/06 20:23:22 by lcharlet          #+#    #+#             */
+/*   Updated: 2021/12/06 22:01:25 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx/mlx.h"
 #include "so_long.h"
 
-void	open_window(t_game *game)
+void	no_collet_exit(t_game *game, int i, int j)
 {
-	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx,
-			game->column * 64, game->row * 64, "so_long");
+	if (game->map[i][j] == 'E' && game->count_collect == 0)
+		close_game(game);
 }
 
-void	create_game(t_game *game)
+void	is_collect(t_game *game, int i, int j)
 {
-	open_window(game);
+	if (game->map[i][j] == 'C')
+		game->count_collect--;
 }

@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_game.c                                      :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 20:23:54 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/12/06 20:39:10 by lcharlet         ###   ########lyon.fr   */
+/*   Created: 2021/12/06 20:25:28 by lcharlet          #+#    #+#             */
+/*   Updated: 2021/12/06 22:02:30 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx/mlx.h"
 #include "so_long.h"
 
-void	open_window(t_game *game)
+void	ft_putstr_fd(char *s, int fd)
 {
-	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx,
-			game->column * 64, game->row * 64, "so_long");
-}
+	int	i;
 
-void	create_game(t_game *game)
-{
-	open_window(game);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }

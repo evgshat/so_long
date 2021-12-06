@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_game.c                                      :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 20:23:54 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/12/06 20:39:10 by lcharlet         ###   ########lyon.fr   */
+/*   Created: 2021/12/06 20:21:18 by lcharlet          #+#    #+#             */
+/*   Updated: 2021/12/06 20:37:21 by lcharlet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx/mlx.h"
 #include "so_long.h"
 
-void	open_window(t_game *game)
+void	error(char *mes)
 {
-	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx,
-			game->column * 64, game->row * 64, "so_long");
-}
-
-void	create_game(t_game *game)
-{
-	open_window(game);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(mes, 2);
+	exit (1);
 }
