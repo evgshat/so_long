@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 20:24:10 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/12/06 22:00:04 by lcharlet         ###   ########lyon.fr   */
+/*   Updated: 2021/12/11 16:09:32 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	main(int argc, char **argv)
 	(void)argv;
 	if (argc < 2)
 		error("Map not found\n");
+	count_row(&game, argv);
 	init_struct(&game);
-	count_row(&game);
-	check_map(&game);
+	check_map(&game, argv);
 	count_collect(&game);
 	create_game(&game);
 	init_img(&game);

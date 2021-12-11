@@ -31,15 +31,16 @@ FRAMEWORK	=	-Lmlx -lm -lmlx -framework OpenGL -framework AppKit
 HEADER = so_long.h
 
 $(NAME): $(OBJS)
+	@make -sC mlx/
 	$(CC) $(CFLAGS) $(OBJS) $(FRAMEWORK) -o $(NAME)
 
 %.o: %.c $(HEADER) Makefile
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
-all:	@make -C mlx/ all
-		$(NAME)
+all: $(NAME)
 
 clean:
+		make -C ./mlx clean
 		$(RM) $(OBJS)
 
 fclean:	clean
@@ -48,5 +49,3 @@ fclean:	clean
 re:	fclean all
 
 .PHONY: all clean fclean re
-
-# FRAMEWORK	=	-Lmlx -lm -lmlx -framework OpenGL -framework AppKit

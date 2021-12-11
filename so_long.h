@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 20:28:25 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/12/06 22:00:35 by lcharlet         ###   ########lyon.fr   */
+/*   Updated: 2021/12/11 16:04:11 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,11 @@ typedef struct s_check
 
 int		init_struct(t_game *game);
 char	*get_next_line(int fd);
-void	check_map(t_game *game);
+void	check_map(t_game *game, char **argv);
 void	create_game(t_game *game);
 int		draw(t_game *game);
 void	init_img(t_game *game);
-void	count_row(t_game *game);
+void	count_row(t_game *game, char **argv);
 void	position_player(t_game *game);
 int		move(int button, t_game *game);
 int		can_move(int button, t_game *game);
