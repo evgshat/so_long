@@ -23,15 +23,13 @@ OBJS = $(SRCS:.c=.o)
 OBJS_B = $(SRCS_B:.c=.o)
 
 NAME = so_long
-CFLAGS = -Werror -Wall -Wextra -g
+CFLAGS = -Werror -Wall -Wextra -g -std=c99
 CC = gcc
 RM = rm -rf
 FRAMEWORK	=	-Lmlx -lm -lmlx -framework OpenGL -framework AppKit
-
 HEADER = so_long.h
 
 $(NAME): $(OBJS)
-	@make -sC mlx/
 	$(CC) $(CFLAGS) $(OBJS) $(FRAMEWORK) -o $(NAME)
 
 %.o: %.c $(HEADER) Makefile

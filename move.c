@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 20:24:46 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/12/06 22:02:22 by lcharlet         ###   ########lyon.fr   */
+/*   Updated: 2022/01/04 22:00:01 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	move(int button, t_game *game)
 
 void	move_w(t_game *game)
 {
+
 	is_collect(game, --game->pl_i, game->pl_j);
 	game->pl_i++;
 	no_collet_exit(game, --game->pl_i, game->pl_j);
@@ -49,7 +50,9 @@ void	move_w(t_game *game)
 	delete_flags_player(game);
 	game->flag_back = 1;
 	game->steps++;
-	printf("Step : %d\n", game->steps);
+
+	// printf("Step : %d\n", game->steps);
+
 }
 
 void	move_s(t_game *game)

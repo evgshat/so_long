@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 20:24:27 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/12/06 20:36:42 by lcharlet         ###   ########lyon.fr   */
+/*   Updated: 2022/01/04 18:45:39 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,6 @@ void	init_img(t_game *game)
 			"assets/empty.xpm", &img_w, &img_h);
 	game->exit = mlx_xpm_file_to_image(game->mlx,
 			"assets/exit.xpm", &img_w, &img_h);
+	game->img_steps = mlx_xpm_file_to_image(game->mlx,
+			"assets/steps.xpm", &img_w, &img_h);
 }

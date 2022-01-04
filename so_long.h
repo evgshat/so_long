@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 20:28:25 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/12/11 16:04:11 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/01/04 22:09:45 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 # define SO_LONG_H
 
 # include <fcntl.h>
-# include "mlx/mlx_int.h"
-# include "mlx/mlx.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include "get_next_line.h"
+# include "mlx/mlx.h"
+// # include "mlx/mlx_int.h"
 
 # define TRUE	1
 # define FALSE	0
@@ -32,6 +32,8 @@
 # define ESC	53
 # define PRESS	2
 # define EXIT	17
+
+# define WHITE	0xFFFFFF
 
 typedef struct s_img
 {
@@ -58,6 +60,7 @@ typedef struct s_game
 	void	*player_back;
 	void	*player_right;
 	void	*player_left;
+	void	*img_steps;
 	int		flag_front;
 	int		flag_back;
 	int		flag_right;
@@ -101,5 +104,6 @@ void	_check_map(t_game *game);
 void	check_first_and_last_line(char *line);
 void	check_rectangular(size_t len_first,
 			char *line, int num_row, t_game *game);
+char	*ft_itoa(int n);
 
 #endif

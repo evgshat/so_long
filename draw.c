@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 20:24:04 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/12/06 20:50:49 by lcharlet         ###   ########lyon.fr   */
+/*   Updated: 2022/01/04 22:09:50 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	draw_map(t_game *game)
 	int	j;
 
 	i = 0;
+	mlx_put_image_to_window(game->mlx,
+				game->win, game->empty, 0 * 64, 0 * 64);
 	while (i < game->row)
 	{
 		j = 0;
@@ -68,6 +70,7 @@ int	draw(t_game *game)
 {
 	int	i;
 	int	j;
+	char *str;
 
 	i = 0;
 	mlx_clear_window(game->mlx, game->win);
@@ -85,5 +88,10 @@ int	draw(t_game *game)
 		}
 		i++;
 	}
+	mlx_put_image_to_window(game->mlx,
+			game->win, game->img_steps, 0 * 64, 0 * 64);
+	str = ft_itoa(game->steps);
+	mlx_string_put(game->mlx, game->win, 24, 22, WHITE, str);
+	free (str);
 	return (0);
 }
