@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 20:22:40 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/12/11 16:03:46 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/01/05 13:49:12 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	check_wrong_ch(char *line)
 	while (line[i] != '\n' && line[i] != '\0')
 	{
 		if (line[i] != '0' && line[i] != '1'
-			&& line[i] != 'E' && line[i] != 'P' && line[i] != 'C')
+			&& line[i] != 'E' && line[i] != 'P' && line[i] != 'C' && line[i] != 'R')
 			error("Wrong symbols\n");
 		i++;
 	}

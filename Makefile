@@ -16,7 +16,8 @@ SRCS = game.c \
 		count_collect.c \
 		collect.c \
 		error.c \
-		utils.c
+		utils.c \
+		is_enemy.c \
 
 OBJS = $(SRCS:.c=.o)
 

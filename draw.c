@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 20:24:04 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/01/04 22:09:50 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/01/05 13:48:14 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ void	draw_other(t_game *game, int i, int j)
 	else if (game->map[i][j] == '0')
 		mlx_put_image_to_window(game->mlx,
 			game->win, game->empty, j * 64, i * 64);
+	else if (game->map[i][j] == 'R')
+		mlx_put_image_to_window(game->mlx,
+			game->win, game->marge_right, j * 64, i * 64);
 }
 
 int	draw(t_game *game)

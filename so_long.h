@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 20:28:25 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/01/04 22:09:45 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/01/05 19:07:35 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ typedef struct s_game
 	void	*player_back;
 	void	*player_right;
 	void	*player_left;
+	void	*marge_right;
+	void	*end_of_game;
 	void	*img_steps;
 	int		flag_front;
 	int		flag_back;
@@ -105,5 +107,6 @@ void	check_first_and_last_line(char *line);
 void	check_rectangular(size_t len_first,
 			char *line, int num_row, t_game *game);
 char	*ft_itoa(int n);
+void	is_enemy(t_game *game, int i, int j);
 
 #endif
