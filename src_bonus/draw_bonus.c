@@ -6,11 +6,10 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 20:24:04 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/01/06 19:43:41 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/01/09 15:29:46 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "mlx/mlx.h"
 #include "so_long_bonus.h"
 
 void	draw_map(t_game *game)
@@ -69,21 +68,12 @@ void	draw_other(t_game *game, int i, int j)
 			game->win, game->marge_right, j * 64, i * 64);
 }
 
-int	draw(t_game *game)
+static void	end_draw(t_game *game)
 {
-	int		i;
-	int		j;
-	char	*str;
+	int	i;
+	int	j;
 
 	i = 0;
-	mlx_clear_window(game->mlx, game->win);
-	if (game->game_over == 1)
-	{
-		mlx_put_image_to_window(game->mlx,
-			game->win, game->end_of_game, 140, 15);
-		return (0);
-	}
-	draw_map(game);
 	while (i < game->row)
 	{
 		j = 0;
@@ -97,6 +87,21 @@ int	draw(t_game *game)
 		}
 		i++;
 	}
+}
+
+int	draw(t_game *game)
+{
+	char	*str;
+
+	mlx_clear_window(game->mlx, game->win);
+	if (game->game_over == 1)
+	{
+		mlx_put_image_to_window(game->mlx,
+			game->win, game->end_of_game, 140, 15);
+		return (0);
+	}
+	draw_map(game);
+	end_draw(game);
 	mlx_put_image_to_window(game->mlx,
 		game->win, game->img_steps, 0 * 64, 0 * 64);
 	str = ft_itoa(game->steps);
@@ -104,5 +109,3 @@ int	draw(t_game *game)
 	free (str);
 	return (0);
 }
-
-

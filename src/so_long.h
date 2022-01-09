@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 20:28:25 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/01/06 18:35:13 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/01/09 15:26:54 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,10 @@
 # include <stdlib.h>
 # include "get_next_line.h"
 # include "../mlx/mlx.h"
-// # include "mlx/mlx_int.h"
 
 # define TRUE	1
 # define FALSE	0
 
-// button
 # define W		13
 # define S		1
 # define A		0

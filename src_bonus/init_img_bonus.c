@@ -1,17 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_img.c                                         :+:      :+:    :+:   */
+/*   init_img_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 20:24:27 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/01/06 16:30:23 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/01/09 15:33:05 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "mlx/mlx.h"
 #include "so_long_bonus.h"
+
+static void	end_init_img(t_game *game)
+{
+	int	img_w;
+	int	img_h;
+
+	img_w = 10;
+	img_h = 10;
+	game->img_steps = mlx_xpm_file_to_image(game->mlx,
+			"assets/steps.xpm", &img_w, &img_h);
+	game->marge_right = mlx_xpm_file_to_image(game->mlx,
+			"assets/marge_right.xpm", &img_w, &img_h);
+	game->end_of_game = mlx_xpm_file_to_image(game->mlx,
+			"assets/end_of_game.xpm", &img_w, &img_h);
+}
 
 void	init_img(t_game *game)
 {
@@ -36,10 +50,5 @@ void	init_img(t_game *game)
 			"assets/empty.xpm", &img_w, &img_h);
 	game->exit = mlx_xpm_file_to_image(game->mlx,
 			"assets/exit.xpm", &img_w, &img_h);
-	game->img_steps = mlx_xpm_file_to_image(game->mlx,
-			"assets/steps.xpm", &img_w, &img_h);
-	game->marge_right = mlx_xpm_file_to_image(game->mlx,
-			"assets/marge_right.xpm", &img_w, &img_h);
-	game->end_of_game = mlx_xpm_file_to_image(game->mlx,
-			"assets/end_of_game.xpm", &img_w, &img_h);
+	end_init_img(game);
 }
