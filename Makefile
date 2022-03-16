@@ -51,6 +51,7 @@ HEADER = so_long.h
 HEADER_B = so_long_bonus.h
 
 $(NAME): $(OBJS)
+	@make -sC mlx/
 	$(CC) $(CFLAGS) $(OBJS) $(FRAMEWORK) -o $(NAME)
 
 %.o: %.c $(HEADER) Makefile
